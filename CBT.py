@@ -7,32 +7,48 @@ ganivet = 0
 ganivetma = 0
 zona = 1
 
-print("---CBT---")
-time.sleep(1)
-print("Benvingut a CBT, un joc de text.")
-time.sleep(2)
-print("Hauràs d'escriure de manera simple: acció+objecte")
-time.sleep(3)
-print("Per el moment et dono les quatre frases bàsiques del joc:")
-time.sleep(3)
-print("agafar poma")
-time.sleep(1)
-print("agafar pinya")
-time.sleep(1)
-print("menjar poma")
-time.sleep(1)
-print("menjar pinya")
-time.sleep(1)
-print("També pots veure el que dus a sobre amb: motxilla")
-time.sleep(2)
-print("En aquests moments ets al bosc")
-time.sleep(2)
-print("Bona sort!")
-time.sleep(1)
+class player():
+    motxilla = {'pinya':0, 'pinyapelada':0, 'poma':poma, 
+    'money':money, 'ganivet':False}
+    ganivetma = False
+    sona = 'bosc'
+    
+    def showMotxilla(self):
+        for key,value in self.motxilla.items() :
+            if value==False:
+                print(key,': ', 'no en tens')
+            else:    
+                print(key,': ', value)
 
-while True:
-    inp = input(">>")
+class sona():
+    accions = ['agafar']
 
+def presentacio():
+    print("---CBT---")
+    time.sleep(1)
+    print("Benvingut a CBT, un joc de text.")
+    time.sleep(2)
+    print("Hauràs d'escriure de manera simple: acció+objecte")
+    time.sleep(3)
+    print("Per el moment et dono les quatre frases bàsiques del joc:")
+    time.sleep(3)
+    print("agafar poma")
+    time.sleep(1)
+    print("agafar pinya")
+    time.sleep(1)
+    print("menjar poma")
+    time.sleep(1)
+    print("menjar pinya")
+    time.sleep(1)
+    print("També pots veure el que dus a sobre amb: motxilla")
+    time.sleep(2)
+    print("En aquests moments ets al bosc")
+    time.sleep(2)
+    print("Bona sort!")
+    time.sleep(1)
+presentacio()
+
+def process(inp):
     if zona == 0:
         print("La pinya estava en mal estat")
         time.sleep(1)
@@ -170,3 +186,9 @@ while True:
             print ("tens", pinya, "pinya/es")
             print ("tens", pinyapelada, "pinya/es pelada/es")
             print("tens", money, "$")
+
+
+player = player()
+while True:
+    inp = input(">>")
+    process(inp)
