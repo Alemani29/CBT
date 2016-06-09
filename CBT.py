@@ -34,13 +34,13 @@ while True:
     inp = input(">>")
 
 
-        if inp == "bosc":
-            zona = 1
-            print("Ets al bosc. Aquí pots collir fruita")
+    if inp == "bosc":
+        zona = 1
+        print("Ets al bosc. Aquí pots collir fruita")
 
-        if inp == "ciutat":
-            zona = 2
-            print("Ets a la ciutat. Aquí pots accedir a la botiga")          
+    if inp == "ciutat":
+        zona = 2
+        print("Ets a la ciutat. Aquí pots accedir a la botiga")          
 
 
     if inp == "restart":
