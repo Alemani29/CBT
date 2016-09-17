@@ -1,4 +1,10 @@
+#import files
+import intro
 import time
+import motxilla
+import bosc
+
+#variables
 pinya = 0
 pinyapelada = 0
 poma = 0
@@ -6,33 +12,16 @@ money = 0
 ganivet = 0
 ganivetma = 0
 zona = 1
-    
-print("---CBT---")
-time.sleep(1)
-print("Benvingut a CBT, un joc de text.")
-time.sleep(2)
-print("Hauràs d'escriure de manera simple: acció+objecte")
-time.sleep(3)
-print("Per el moment et dono les quatre frases bàsiques del joc:")
-time.sleep(3)
-print("agafar poma")
-time.sleep(1)
-print("agafar pinya")
-time.sleep(1)
-print("menjar poma")
-time.sleep(1)
-print("menjar pinya")
-time.sleep(1)
-print("També pots veure el que portes a sobre amb: motxilla")
-time.sleep(2)
-print("En aquests moments ets al bosc")
-time.sleep(2)
-print("Bona sort!")
-time.sleep(1)
 
-while True:
+intro.intro()
+while True:    
     inp = input(">>")
 
+    if inp == "motxilla":
+        print ("tens", poma, "poma/es")
+        print ("tens", pinya, "pinya/es")
+        print ("tens", pinyapelada, "pinya/es pelada/es")
+        print ("tens", money, "$")
 
     if inp == "bosc":
         zona = 1
@@ -40,7 +29,23 @@ while True:
 
     if inp == "ciutat":
         zona = 2
-        print("Ets a la ciutat. Aquí pots accedir a la botiga")          
+        print("Ets a la ciutat. Aquí pots accedir a la botiga")
+
+    if inp == "menjar poma":
+        if poma<=0:
+            print("No pots tenir pomes negatives!")
+        else:
+            poma-=1
+            print ("tens", poma, "poma/es")
+
+    if inp == "menjar pinya":
+        if pinya<=0:
+            print("No pots tenir pinyes negatives!")
+        else:
+            if pinyapelada<=0:
+                print("Tros de ruc! No has pelat la pinya!")
+            else:
+                zona = 0
 
 
     if inp == "restart":
@@ -52,24 +57,7 @@ while True:
         ganivetma = 0
         zona = 1
     
-        print("---CBT---")
-        print("Benvingut a CBT, un joc de text.")
-        print("Hauràs d'escriure de manera simple: acció+objecte")
-        print("Per el moment et dono les quatre frases bàsiques del joc:")
-        print("agafar poma")
-        print("agafar pinya")
-        print("menjar poma")
-        print("menjar pinya")
-        print("També pots veure el que portes a sobre amb: motxilla")
-        print("En aquests moments ets al bosc")
-        print("Bona sort!")
-    
-    
-    if inp == "motxilla":
-            print("tens", poma, "poma/es")
-            print("tens", pinya, "pinya/es")
-            print("tens", pinyapelada, "pinya/es pelada/es")
-            print("tens", money, "$")
+        intro.intro()
 
 
     if zona == 0:
@@ -90,27 +78,8 @@ while True:
             print("tens", pinya, "pinya/es")
 
         if inp == "agafar pinya pelada":
-            print ("Que em prens per imbècil?!")
-
-        if inp == "menjar poma":
-            if poma<=0:
-                print("No pots tenir pomes negatives!")
-            else:
-                poma-=1
-                print ("tens", poma, "poma/es")
-
-        if inp == "menjar pinya":
-            if pinya<=0:
-                print("No pots tenir pinyes negatives!")
-            else:
-                print("Tros de ruc! No has pelat la pinya!")
-
-        if inp == "menjar pinya pelada":
-            if pinyapelada<=0:
-                print("Tros de ruc! No has pelat la pinya!")
-            else:
-                zona = 0
-             
+            print ("Que em prens per imbècil?!")            
+          
         if inp == "pelar pinya":
             if pinya<=0:
                 print("Com pots pelar una cosa que no tens?!")
@@ -195,14 +164,7 @@ while True:
                 print("Aquí tens")
                 print("tens", ganivet, "ganivet/s")
                 print("tens", money, "$")
-
-        if inp == "comprar pinya":
-                print("La compra de pinyes és il·legal")
-                time.sleep(2)
-                zona = 3
-                print("Has sigut arrestat, ara ets a la presó")
-                print("Tots els teus objectes han sigut requisats")
-
+        
         if inp == "vendre poma":
             if poma<=0:
                 print("No pots tenir pomes negatives!")
@@ -214,6 +176,23 @@ while True:
                 print("Has venut una poma, guanyes 1$")
                 print ("tens", poma, "poma/es")
 
+        if inp == "comprar pinya":
+            if money<=0:
+                print("Com vols pagar?!")
+                print("No tens suficients $!")
+                print("proba a vendre amb >>vendre+objecte")
+            else:
+                print("La compra de pinyes és il·legal")
+                time.sleep(2)
+                zona = 3
+                ganivet = 0
+                poma = 0
+                pinya = 0
+                money = 0
+                pinyapelada = 0
+                print("Has estat arrestat, ara ets a la presó")
+                print("Tots els teus objectes han estat requisats")
+
         if inp == "vendre pinya":
             if pinya<=0:
                 print("No pots tenir pinyes negatives!")
@@ -223,5 +202,11 @@ while True:
                 print("La venda de pinyes és il·legal")
                 time.sleep(2)
                 zona = 3
-                print("Has sigut arrestat, ara ets a la presó")
-                print("Tots els teus objectes han sigut requisats")
+                ganivet = 0
+                poma = 0
+                pinya = 0
+                money = 0
+                pinyapelada = 0
+                print("Has estat arrestat, ara ets a la presó")
+                print("Tots els teus objectes han estat requisats")
+        
