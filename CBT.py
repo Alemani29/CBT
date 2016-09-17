@@ -1,8 +1,6 @@
 #import files
 import intro
 import time
-import motxilla
-import bosc
 
 #variables
 pinya = 0
