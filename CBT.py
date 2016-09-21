@@ -1,6 +1,7 @@
 #import files
 import intro
 import time
+import random
 
 #variables
 pinya = 0
@@ -12,7 +13,9 @@ ganivetma = 0
 zona = 1
 
 intro.intro()
-while True:    
+while True:
+
+    #Basics
     inp = input(">>")
 
     if inp == "motxilla":
@@ -40,10 +43,13 @@ while True:
         if pinya<=0:
             print("No pots tenir pinyes negatives!")
         else:
-            if pinyapelada<=0:
-                print("Tros de ruc! No has pelat la pinya!")
-            else:
-                zona = 0
+            print("Tros de ruc! No has pelat la pinya!")
+
+    if inp == "menjar pinya pelada":
+        if pinyapelada<=0:
+            print("Que intentes fer?")
+        else:
+            zona = 0
 
 
     if inp == "restart":
@@ -57,7 +63,7 @@ while True:
     
         intro.intro()
 
-
+    #The End
     if zona == 0:
         print("La pinya estava en mal estat")
         time.sleep(2)
@@ -66,6 +72,7 @@ while True:
         print("Escriu restart per tornar a començar")
 
 
+    #Bosc
     if zona == 1:
         if inp == "agafar poma":
             poma = poma+1
@@ -108,7 +115,8 @@ while True:
             print("Estàs en un bosc, per comprar, vés a la ciutat")
             print("fes servir >>ciutat")
 
-    
+
+    #Ciutat
     if zona == 2:
         if inp == "agafar poma":
             print("D'on agafes les pomes? Ets a la ciutat!")
@@ -119,24 +127,16 @@ while True:
             print("Has d'anar al bosc amb >>bosc")
                     
         if inp == "botiga":
-            zona = 4
+            zona = 3
             print("Benvingut a la botiga")
             print("pots comprar amb >>comprar+objecte")
             print("poma - 1$")
-            print("ganivet - 10$")
+            print("ganivet - 50$")
             print("pinya - ?$")               
 
-        
+    
+    #Botiga
     if zona == 3:
-        ganivet = 0
-        poma = 0
-        pinya = 0
-        money = 0
-        pinyapelada = 0
-
-
-
-    if zona == 4:
         if inp == "comprar poma":
             print("Costa 1$")
             if money<=0:
@@ -151,14 +151,14 @@ while True:
                 print("tens", money, "$")
             
         if inp == "comprar ganivet":
-            print("Costa 10$")
-            if money<=9:
+            print("Costa 50$")
+            if money<=49:
                 print("Com vols pagar?!")
                 print("No tens suficients $!")
                 print("proba a vendre")
             else:
                 ganivet = ganivet+1
-                money = money-10
+                money = money-50
                 print("Aquí tens")
                 print("tens", ganivet, "ganivet/s")
                 print("tens", money, "$")
@@ -167,44 +167,89 @@ while True:
             if poma<=0:
                 print("No pots tenir pomes negatives!")
                 print("Pots agafar pomes al bosc")
-                print("per anar al bosc utilitza >>bosc")
             else:
                 poma = poma-1
                 money = money+1
                 print("Has venut una poma, guanyes 1$")
                 print ("tens", poma, "poma/es")
-
-        if inp == "comprar pinya":
-            if money<=0:
-                print("Com vols pagar?!")
-                print("No tens suficients $!")
-                print("proba a vendre amb >>vendre+objecte")
-            else:
-                print("La compra de pinyes és il·legal")
-                time.sleep(2)
-                zona = 3
-                ganivet = 0
-                poma = 0
-                pinya = 0
-                money = 0
-                pinyapelada = 0
-                print("Has estat arrestat, ara ets a la presó")
-                print("Tots els teus objectes han estat requisats")
+                print("tens", money, "$")
 
         if inp == "vendre pinya":
             if pinya<=0:
                 print("No pots tenir pinyes negatives!")
                 print("Pots agafar pinyes al bosc")
-                print("per anar al bosc utilitza >>bosc")
             else:
-                print("La venda de pinyes és il·legal")
-                time.sleep(2)
-                zona = 3
-                ganivet = 0
-                poma = 0
-                pinya = 0
-                money = 0
-                pinyapelada = 0
-                print("Has estat arrestat, ara ets a la presó")
-                print("Tots els teus objectes han estat requisats")
+                if random.randint(0,100) <1:
+                    pinya =pinya-1
+                    money = money+100
+                    print("Has venut una pinya, tot i que és il·legal, compte no t'atrapin. Guanyes 100$")
+                    print ("tens", pinya, "pinya/es")
+                    print("tens", money, "$")
+                    
+                else:
+                    print("La venda de pinyes és il·legal")
+                    time.sleep(2)
+                    zona = 4
+                    ganivet = 0
+                    poma = 0
+                    pinya = 0
+                    money = 0
+                    pinyapelada = 0
+                    print("Has estat arrestat, ara ets a la presó")
+                    print("Tots els teus objectes han estat requisats")
+                    time.sleep(1)
+                    print("Tot i així la porta de la cel·la sembla bastant antiga")
+
+
+    #Cel·la      
+    if zona == 4:
+        ganivet = 0
+        poma = 0
+        pinya = 0
+        money = 0
+        pinyapelada = 0
+
+        if inp == "obrir porta":
+            print("La porta és antiga, però encara aguanta")
+            print("Potser si fas molta força pots trencar la porta")
+
+        if inp == "trencar porta":
+            print("La porta ha cedit! Has aconseguit escapar!")
+            time.sleep(2)
+            print("Ets a una gran sala on hi ha alguns cofres. Potser en un hi ha el teu material")
+            print("També hi ha una gran porta")
+            zona = 5
+
+
+    #Presó
+    if zona == 5:
+
+        if inp == "obrir cofre":
+            if random.randint(0,3) <1:
+                if random.randint(0,5) <1:
+                    if random.randint(0,10) <1:
+                        print("Un ganivet!")
+                    else:
+                        print("Has trobat 10 pomes i 10$")
+                        poma = poma+10
+                        money = money+10
+                else:
+                    print("Has trobat 5 pomes")
+                    poma = poma+5                        
+            else:
+                print("No hi ha res")
+
+        if inp == "obrir porta":
+            print("Ets a la ciutat")
+            zona = 2
+
+
+    #CBT
+    if random.randint(0,1000) <1:
+        time.sleep(2)
+        print("Ha aparegut una Cabra Boja Tridimensional!!!")
+        time.sleep(1)
+        print("Això és un event únic!")
+        time.sleep(1)
+        print("Ràpid atrapa-la abans de que escapi!")            
         
