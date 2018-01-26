@@ -163,7 +163,7 @@ while True:
             print("pinya - ?$")
 
         if inp == "taverna":
-            print("Benvingut a la teberna de l'OGRE CRIDANER")
+            print("Benvingut a la taverna de l'OGRE CRIDANER")
             time.sleep(1)
             print("Aqui pots trobar tot tipus de viatgers:")
             print("mercaders, trobadors, soldats i exploradors, entre altres")
@@ -193,6 +193,15 @@ while True:
                 print("Aquí tens")
                 print("tens", poma, "poma/es")
                 print("tens", money, "$")
+
+        if inp == "comprar pinya":
+            if money<=0:
+                print("Com vols pagar?!")
+                print("No tens suficients $!")
+                print("proba a vendre amb >>vendre+objecte")
+            else:
+                print("Però es pot saber que fas?!")
+                print("Es que no saps el problema que hi ha amb les pinyes?!!!")
             
         if inp == "comprar ganivet":
             print("Costa 50$")
@@ -260,7 +269,7 @@ while True:
         if inp == "trencar porta":
             print("La porta ha cedit! Has aconseguit escapar!")
             time.sleep(2)
-            print("Ets a una gran sala on hi ha alguns cofres. Potser en un hi ha el teu material")
+            print("Ets a una gran sala on hi ha alguns cofres")
             print("També hi ha una gran porta")
             zona = 5
 
@@ -302,6 +311,25 @@ while True:
             Barra = True
 
         if Barra == True:
+
+            if inp == "aigua":
+                print("Costa 5$")
+                if money<=4:
+                    print("Com vols pagar?!")
+                    print("No tens suficients $!")
+                    print("proba a vendre a la botiga")
+                else:
+                    money = money-5
+                    print("Aquí tens")
+                    time.sleep(1)
+                    print("glup")
+                    time.sleep(1)
+                    print("glup")
+                    time.sleep(2)
+                    print("Es nota que tenies sed")
+                    time.sleep(1)
+                    print("Has tornat a la teva taula")
+                    Barra = False
                         
             if inp == "pinya colada":
                 pygame.mixer.music.load("songs\pinyacolada.mp3")
@@ -310,6 +338,7 @@ while True:
                     time.clock()
                     
                 print("Has pres una Pinya Colada! No cal que paguis, convida la casa")
+                time.sleep(2)
                 print("Has tornat a la teva taula")
                 Barra = False
                 
@@ -318,7 +347,7 @@ while True:
      #CBT
     if CBT == False:
         
-        if random.randint(0,1000) <1:
+        if random.randint(0,1000000) <1:
             time.sleep(2)
             print("Ha aparegut un CBT! Una Cabra Boja Tridimensional!!!")
             time.sleep(1)
@@ -331,16 +360,22 @@ while True:
     if CBT == True:
 
         if inp == "atrapar CBT":
-            print("Però a que jugues?! És un CBT serà molt més difícil que escriure atrapar CBT!")
+            print("Però a que jugues?!")
             time.sleep(1)
-            print("proba a agafar una pakeball! Si, el CBT és un Pakemun interdimensional")
+            print("És un CBT serà molt més difícil que escriure atrapar CBT!")
+            time.sleep(1)
+            print("Proba a agafar una pakeball!")
+            time.sleep(1)
+            print("Sí! El CBT és un Pakemun interdimensional")
 
         if inp == "agafar pakeball":
             print("Evidentment tens una pakeball! Has atarpat el CBT")
+            time.sleep(4)
+            print("Era sarcasme")
+            time.sleep(1)
+            print("El CBT ha creat un vòrtex interdimensional")
             time.sleep(2)
-            print("Era sarcasme. El CBT ha creat un vòrtex interdimensional")
-            time.sleep(2)
-            print("El CBT t'ha teletransportat. Tens sort de no haver mort")
+            print("El CBT t'ha teletransportat al bosc. Tens sort de no haver mort")
             CBT = False
             zona = 1
             
